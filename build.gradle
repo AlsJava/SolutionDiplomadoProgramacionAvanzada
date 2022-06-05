@@ -46,6 +46,7 @@ dependencies {
 
     // JSON parser
     // User Versiones viejas de librerias genera vulnerabilidades (Estan solo en los test para demostrar funcionamiento solamente)
+    // TODO comentar cuando se trabaje desde la semana 9
     testImplementation("com.fasterxml.jackson.core:jackson-core:2.8.8")
     testImplementation("com.fasterxml.jackson.core:jackson-annotations:2.8.8")
     testImplementation("com.fasterxml.jackson.core:jackson-databind:2.8.8")
@@ -62,7 +63,6 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testAnnotationProcessor("org.projectlombok:lombok:$lombok_version")
 }
-
 
 test {
     useJUnitPlatform()
