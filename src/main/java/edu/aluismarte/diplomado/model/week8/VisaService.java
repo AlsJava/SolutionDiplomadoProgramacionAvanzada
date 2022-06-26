@@ -12,7 +12,7 @@ import java.util.Map;
  * @author aluis on 4/24/2022.
  * @implNote Demostration class only
  */
-public class ServiceMastercard implements PaymentGateway {
+public class VisaService implements PaymentGateway {
 
     private static final Map<String, Payment> PAYMENTS = new HashMap<>();
 
@@ -62,6 +62,6 @@ public class ServiceMastercard implements PaymentGateway {
 
     @Override
     public String printWhoIAm() {
-        return "Yo soy Mastercard";
+        return "Yo soy Visa";
     }
 }

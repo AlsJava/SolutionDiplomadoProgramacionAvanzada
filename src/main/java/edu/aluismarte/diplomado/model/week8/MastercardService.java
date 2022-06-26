@@ -7,12 +7,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Elemento común para simular a stripe, normalmente esto se hace con la API que la misma empresa provee
+ * Elemento común para simular a paypal, normalmente esto se hace con la API que la misma empresa provee
  *
  * @author aluis on 4/24/2022.
  * @implNote Demostration class only
  */
-public class ServiceStripe implements PaymentGateway {
+public class MastercardService implements PaymentGateway {
 
     private static final Map<String, Payment> PAYMENTS = new HashMap<>();
 
@@ -62,6 +62,6 @@ public class ServiceStripe implements PaymentGateway {
 
     @Override
     public String printWhoIAm() {
-        return "Yo soy Stripe";
+        return "Yo soy Mastercard";
     }
 }
