@@ -1,4 +1,4 @@
-package edu.aluismarte.diplomado.project.week10.saga.model;
+package edu.aluismarte.diplomado.project.week11.saga.model;
 
 import lombok.Getter;
 

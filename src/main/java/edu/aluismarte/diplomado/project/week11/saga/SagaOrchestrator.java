@@ -1,8 +1,8 @@
-package edu.aluismarte.diplomado.project.week10.saga;
+package edu.aluismarte.diplomado.project.week11.saga;
 
-import edu.aluismarte.diplomado.project.week10.saga.model.Saga;
-import edu.aluismarte.diplomado.project.week10.saga.model.SagaException;
-import edu.aluismarte.diplomado.project.week10.saga.model.SagaStep;
+import edu.aluismarte.diplomado.project.week11.saga.model.Saga;
+import edu.aluismarte.diplomado.project.week11.saga.model.SagaException;
+import edu.aluismarte.diplomado.project.week11.saga.model.SagaStep;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;

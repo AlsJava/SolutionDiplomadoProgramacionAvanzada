@@ -1,4 +1,4 @@
-package edu.aluismarte.diplomado.project.week9.command;
+package edu.aluismarte.diplomado.project.week10.command;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;

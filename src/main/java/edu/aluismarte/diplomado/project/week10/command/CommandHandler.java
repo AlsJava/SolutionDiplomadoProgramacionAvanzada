@@ -1,4 +1,4 @@
-package edu.aluismarte.diplomado.project.week9.command;
+package edu.aluismarte.diplomado.project.week10.command;
 
 public interface CommandHandler<R, C extends Command<R>> {
 

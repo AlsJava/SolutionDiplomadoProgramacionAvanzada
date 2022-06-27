@@ -1,4 +1,4 @@
-package edu.aluismarte.diplomado.project.week9.command;
+package edu.aluismarte.diplomado.project.week10.command;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.integration.core.MessagingTemplate;
