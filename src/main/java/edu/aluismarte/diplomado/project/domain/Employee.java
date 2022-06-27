@@ -1,6 +1,7 @@
 package edu.aluismarte.diplomado.project.domain;
 
 import edu.aluismarte.diplomado.model.project.EmployeeState;
+import edu.aluismarte.diplomado.project.week9.Conversions;
 import edu.aluismarte.diplomado.project.week9.network.dto.EmployeeDTO;
 import lombok.*;
 
