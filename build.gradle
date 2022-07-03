@@ -1,6 +1,6 @@
 plugins {
     id "java"
-    id 'org.springframework.boot' version '2.6.9'
+    id 'org.springframework.boot' version '2.7.1'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
@@ -29,6 +29,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.integration:spring-integration-core")
 
+    implementation("org.springframework.data:spring-data-keyvalue:2.7.0") // Simulación de DB Key Value para demostración
+
     runtimeOnly("com.h2database:h2:2.1.212")
 
     implementation("xalan:xalan:2.7.2") // Probar con otras variantes
@@ -55,7 +57,8 @@ dependencies {
     testImplementation("com.fasterxml.jackson.core:jackson-databind:2.8.8")
     testImplementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.8.8")
 
-    implementation('com.github.javafaker:javafaker:1.0.2') // Fake data
+    implementation('com.github.javafaker:javafaker:1.0.2') { exclude module: 'org.yaml' } // Fake data
+    implementation group: 'org.yaml', name: 'snakeyaml', version: '1.26'
     implementation('com.squareup.okhttp3:okhttp:4.10.0') // HTTP connections
 
     testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.8.2')

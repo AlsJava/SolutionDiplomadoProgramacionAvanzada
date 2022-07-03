@@ -1,9 +1,11 @@
 package edu.aluismarte.diplomado.project.domain;
 
+import edu.aluismarte.diplomado.project.week9.network.dto.PaymentDTO;
 import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 /**
@@ -22,8 +24,22 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    // TODO falta completar esto aqui
-
     @Column
     private BigDecimal amount;
+
+    @Column
+    private String createdBy;
+    @Column
+    private String updatedBy;
+    @Column
+    private LocalDateTime createdAt;
+    @Column
+    private LocalDateTime updatedAt;
+
+    public PaymentDTO toDTO() {
+        return PaymentDTO.builder()
+                .id(id)
+                .amount(amount)
+                .build();
+    }
 }
