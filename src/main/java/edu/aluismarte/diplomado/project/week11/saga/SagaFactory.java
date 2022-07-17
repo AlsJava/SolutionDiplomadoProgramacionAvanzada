@@ -3,9 +3,7 @@ package edu.aluismarte.diplomado.project.week11.saga;
 import edu.aluismarte.diplomado.model.project.Demo;
 import edu.aluismarte.diplomado.model.project.DemoResponse;
 import edu.aluismarte.diplomado.project.week11.command.ExerciseCommand;
-import edu.aluismarte.diplomado.project.week11.model.ExerciseResponse;
-import edu.aluismarte.diplomado.project.week11.model.SagaDemoStep1;
-import edu.aluismarte.diplomado.project.week11.model.SagaDemoStep2;
+import edu.aluismarte.diplomado.project.week11.model.*;
 import edu.aluismarte.diplomado.project.week11.saga.model.Saga;
 import edu.aluismarte.diplomado.project.week11.saga.model.SagaPayLoadKey;
 import edu.aluismarte.diplomado.project.week11.saga.model.SagaPayload;
@@ -39,9 +37,8 @@ public class SagaFactory {
                 .key(key)
                 .payload(sagaPayload)
                 .requiredStep(List.of(
-                        // TODO implement the steps/
-//                        SagaDemoStep1.class,
-//                        SagaDemoStep2.class
+                        SagaStepVacationCalculationGetEmployee.class,
+                        SagaStepVacationCalculationCalculate.class
                 ))
                 .build();
     }
