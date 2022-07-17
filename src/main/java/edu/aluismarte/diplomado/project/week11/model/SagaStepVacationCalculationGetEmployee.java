@@ -2,11 +2,15 @@ package edu.aluismarte.diplomado.project.week11.model;
 
 import edu.aluismarte.diplomado.project.domain.Employee;
 import edu.aluismarte.diplomado.project.week11.command.ExerciseCommand;
-import edu.aluismarte.diplomado.project.week11.saga.model.*;
+import edu.aluismarte.diplomado.project.week11.saga.model.SagaStep;
+import edu.aluismarte.diplomado.project.week11.saga.model.SagaStepCompensator;
+import edu.aluismarte.diplomado.project.week11.saga.model.SagaStepHandler;
+import org.springframework.stereotype.Component;
 
 /**
  * @author aluis on 7/17/2022.
  */
+@Component
 public class SagaStepVacationCalculationGetEmployee implements SagaStep<ExerciseResponse> {
 
     @Override
@@ -17,13 +21,13 @@ public class SagaStepVacationCalculationGetEmployee implements SagaStep<Exercise
     @Override
     public SagaStepHandler<ExerciseResponse> getHandler() {
         return sagaPayload -> {
-            ExerciseCommand command = sagaPayload.getProperty(new SagaPayLoadKey<>("command", ExerciseCommand.class));
+            ExerciseCommand command = sagaPayload.getProperty(ExerciseCommand.COMMAND_KEY);
 
             Employee employee = Employee.builder()
                     .name("Lalala")
                     .build();
 
-            sagaPayload.addProperty(new SagaPayLoadKey<>("employee", Employee.class), employee);
+            sagaPayload.addProperty(ExerciseCommand.EMPLOYEE_KEY, employee);
         };
     }
 

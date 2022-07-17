@@ -2,11 +2,11 @@ package edu.aluismarte.diplomado.project.week11.model;
 
 import edu.aluismarte.diplomado.project.domain.Employee;
 import edu.aluismarte.diplomado.project.week11.command.ExerciseCommand;
-import edu.aluismarte.diplomado.project.week11.saga.model.SagaPayLoadKey;
 import edu.aluismarte.diplomado.project.week11.saga.model.SagaStep;
 import edu.aluismarte.diplomado.project.week11.saga.model.SagaStepCompensator;
 import edu.aluismarte.diplomado.project.week11.saga.model.SagaStepHandler;
 import edu.aluismarte.diplomado.week2.Homework;
+import org.springframework.stereotype.Component;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -16,8 +16,8 @@ import java.util.List;
 /**
  * @author aluis on 7/17/2022.
  */
+@Component
 public class SagaStepVacationCalculationCalculate implements SagaStep<ExerciseResponse> {
-
 
     @Override
     public String getName() {
@@ -27,8 +27,8 @@ public class SagaStepVacationCalculationCalculate implements SagaStep<ExerciseRe
     @Override
     public SagaStepHandler<ExerciseResponse> getHandler() {
         return sagaPayload -> {
-            ExerciseCommand command = sagaPayload.getProperty(new SagaPayLoadKey<>("command", ExerciseCommand.class));
-            Employee employee = sagaPayload.getProperty(new SagaPayLoadKey<>("employee", Employee.class));
+            ExerciseCommand command = sagaPayload.getProperty(ExerciseCommand.COMMAND_KEY);
+            Employee employee = sagaPayload.getProperty(ExerciseCommand.EMPLOYEE_KEY);
 
             List<DayOfWeek> workdays = List.of(DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY, DayOfWeek.FRIDAY);
 

@@ -22,7 +22,7 @@ public class ExerciseCommandHandler implements CommandHandler<ExerciseResponse, 
 
     private final SagaOrchestrator sagaOrchestrator;
 
-    @Value("${pattern.saga.timeout}")
+    @Value("${pattern.saga.timeout:60}")
     private int timeout;
 
     @Override

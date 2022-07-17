@@ -25,7 +25,7 @@ import java.math.BigDecimal;
  */
 @RestController
 @RequiredArgsConstructor
-public class Exercise1Week11 {
+public class Exercise1Week9 {
 
     private final PaymentService paymentService;
 

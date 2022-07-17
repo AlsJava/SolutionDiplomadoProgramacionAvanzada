@@ -31,7 +31,7 @@ public class SagaFactory {
 
     public static Saga<ExerciseResponse> createExerciseSaga(String key, ExerciseCommand exerciseCommand) {
         SagaPayload<ExerciseResponse> sagaPayload = new SagaPayload<>();
-        sagaPayload.addProperty(new SagaPayLoadKey<>("command", ExerciseCommand.class), exerciseCommand);
+        sagaPayload.addProperty(ExerciseCommand.COMMAND_KEY, exerciseCommand);
         return Saga.<ExerciseResponse>builder()
                 .name("Hola")
                 .key(key)
