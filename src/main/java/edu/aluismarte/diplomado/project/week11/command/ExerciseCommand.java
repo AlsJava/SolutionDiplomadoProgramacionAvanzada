@@ -16,6 +16,7 @@ import java.time.LocalDate;
 @Builder
 @Getter
 @Setter
+@ToString
 public class ExerciseCommand extends Command<ExerciseResponse> {
 
     public static final SagaPayLoadKey<ExerciseCommand> COMMAND_KEY = new SagaPayLoadKey<>("command", ExerciseCommand.class);

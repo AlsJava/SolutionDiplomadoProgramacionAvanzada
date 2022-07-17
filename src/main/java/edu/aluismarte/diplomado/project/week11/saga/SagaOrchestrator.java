@@ -1,23 +1,28 @@
 package edu.aluismarte.diplomado.project.week11.saga;
 
+import edu.aluismarte.diplomado.project.domain.LogEvent;
 import edu.aluismarte.diplomado.project.week11.saga.model.Saga;
 import edu.aluismarte.diplomado.project.week11.saga.model.SagaException;
 import edu.aluismarte.diplomado.project.week11.saga.model.SagaStep;
+import edu.aluismarte.diplomado.project.week12.service.LogEventService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.*;
 
 @Slf4j
 @Component
 public class SagaOrchestrator {
 
+    private final LogEventService logEventService;
     private final ApplicationContext applicationContext;
 
-    public SagaOrchestrator(ApplicationContext applicationContext) {
+    public SagaOrchestrator(LogEventService logEventService, ApplicationContext applicationContext) {
+        this.logEventService = logEventService;
         this.applicationContext = applicationContext;
     }
 
@@ -46,6 +51,12 @@ public class SagaOrchestrator {
                 log.info("Executing step for SAGA {} : {}", saga.getName(), bean.getName());
                 bean.getHandler().handle(saga.getPayload());
             } catch (Exception ex) {
+                logEventService.save(LogEvent.builder()
+                        .classOwner(getClass().getName())
+                        .process(sagaStep.getName())
+                        .processID(saga.getKey())
+                        .parameterMap(Map.of("payload", saga.getPayload()))
+                        .build());
                 triggerCompensation(saga);
                 saga.setIsCompleteExecution(true);
                 throw ex;
