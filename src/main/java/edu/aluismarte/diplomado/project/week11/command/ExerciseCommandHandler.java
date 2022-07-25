@@ -2,8 +2,8 @@ package edu.aluismarte.diplomado.project.week11.command;
 
 import edu.aluismarte.diplomado.project.week10.command.CommandEvent;
 import edu.aluismarte.diplomado.project.week10.command.CommandHandler;
+import edu.aluismarte.diplomado.project.week11.Exercise1Week11;
 import edu.aluismarte.diplomado.project.week11.model.ExerciseResponse;
-import edu.aluismarte.diplomado.project.week11.saga.SagaFactory;
 import edu.aluismarte.diplomado.project.week11.saga.SagaOrchestrator;
 import edu.aluismarte.diplomado.project.week11.saga.model.Saga;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +27,7 @@ public class ExerciseCommandHandler implements CommandHandler<ExerciseResponse, 
 
     @Override
     public ExerciseResponse handle(ExerciseCommand command) {
-        Saga<ExerciseResponse> saga = SagaFactory.createExerciseSaga(UUID.randomUUID(), command);
+        Saga<ExerciseResponse> saga = Exercise1Week11.createExerciseSaga(UUID.randomUUID(), command);
         return sagaOrchestrator.orchestrate(saga, timeout);
     }
 }

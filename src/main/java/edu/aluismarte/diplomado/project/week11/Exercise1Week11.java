@@ -1,5 +1,15 @@
 package edu.aluismarte.diplomado.project.week11;
 
+import edu.aluismarte.diplomado.project.week11.command.ExerciseCommand;
+import edu.aluismarte.diplomado.project.week11.model.ExerciseResponse;
+import edu.aluismarte.diplomado.project.week11.model.SagaStepVacationCalculationCalculate;
+import edu.aluismarte.diplomado.project.week11.model.SagaStepVacationCalculationGetEmployee;
+import edu.aluismarte.diplomado.project.week11.saga.model.Saga;
+import edu.aluismarte.diplomado.project.week11.saga.model.SagaPayload;
+
+import java.util.List;
+import java.util.UUID;
+
 /**
  * El objetivo es implementar el patrón ya con la base hecha.
  * No se hará el ejercicio de implementar el patrón desde cero porque es posible copiarlo de este proyecto
@@ -15,5 +25,17 @@ package edu.aluismarte.diplomado.project.week11;
  */
 public class Exercise1Week11 {
 
-    // TODO implementar un Saga para calcular vacaciones de un Employee
+    public static Saga<ExerciseResponse> createExerciseSaga(UUID key, ExerciseCommand exerciseCommand) {
+        SagaPayload<ExerciseResponse> sagaPayload = new SagaPayload<>();
+        sagaPayload.addProperty(ExerciseCommand.COMMAND_KEY, exerciseCommand);
+        return Saga.<ExerciseResponse>builder()
+                .name("Hola")
+                .key(key)
+                .payload(sagaPayload)
+                .requiredStep(List.of(
+                        SagaStepVacationCalculationGetEmployee.class,
+                        SagaStepVacationCalculationCalculate.class
+                ))
+                .build();
+    }
 }

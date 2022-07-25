@@ -2,8 +2,8 @@ package edu.aluismarte.diplomado.project.week11.saga;
 
 import edu.aluismarte.diplomado.model.project.Demo;
 import edu.aluismarte.diplomado.model.project.DemoResponse;
-import edu.aluismarte.diplomado.project.week11.command.ExerciseCommand;
-import edu.aluismarte.diplomado.project.week11.model.*;
+import edu.aluismarte.diplomado.project.week11.model.SagaDemoStep1;
+import edu.aluismarte.diplomado.project.week11.model.SagaDemoStep2;
 import edu.aluismarte.diplomado.project.week11.saga.model.Saga;
 import edu.aluismarte.diplomado.project.week11.saga.model.SagaPayLoadKey;
 import edu.aluismarte.diplomado.project.week11.saga.model.SagaPayload;
@@ -30,17 +30,4 @@ public class SagaFactory {
                 .build();
     }
 
-    public static Saga<ExerciseResponse> createExerciseSaga(UUID key, ExerciseCommand exerciseCommand) {
-        SagaPayload<ExerciseResponse> sagaPayload = new SagaPayload<>();
-        sagaPayload.addProperty(ExerciseCommand.COMMAND_KEY, exerciseCommand);
-        return Saga.<ExerciseResponse>builder()
-                .name("Hola")
-                .key(key)
-                .payload(sagaPayload)
-                .requiredStep(List.of(
-                        SagaStepVacationCalculationGetEmployee.class,
-                        SagaStepVacationCalculationCalculate.class
-                ))
-                .build();
-    }
 }
